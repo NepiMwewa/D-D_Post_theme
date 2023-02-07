@@ -35,3 +35,5 @@ register_nav_menus(array(
   'footer' => __('Footer Menu'),
   'privacy' => __('Privacy Menu'),
 ));
+
+include('custom-shortcodes.php');

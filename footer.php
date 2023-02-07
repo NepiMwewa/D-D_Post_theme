@@ -1,6 +1,6 @@
 <footer class="footer-content">
 
-
+  <div class="upper-footer-content">
   <?php wp_nav_menu(array(
       'theme_location' 	=> 'footer',
         'menu_id' 		 	=> 'footer-menu',
@@ -11,6 +11,12 @@
         'fallback_cb' 		=> false
     ) ); 
   ?>
+  <div class="form-div">
+    <h3>Get Free Weekly Encounters</h3>
+    <p>If you sign up for our free weekly newsletter, you’ll be notified when a new encounter releases, and you’ll receive additional details and resources for running that encounter, directly in your inbox.</p>
+    <?php echo do_shortcode('[wpforms id="91"]'); ?>
+  </div>
+  </div>
   
   <div class="footer-copyright">
     <div class="copyright-info">

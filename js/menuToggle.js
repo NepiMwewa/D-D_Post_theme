@@ -79,5 +79,18 @@ function init() {
       }
     });
   }
+
+  var fold = document.getElementById("button-contents");
+
+    fold.addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight){
+        content.style.display = 'none';
+      } else {
+        content.style.display = 'block';
+        
+      }
+    });
 }
 

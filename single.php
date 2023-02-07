@@ -19,8 +19,6 @@
       <section class="text-section">
       
         <div class="single-content">
-          <?php include("assets/breadcrumbs-single.php"); ?>
-          
           <?php the_content();?>
         </div>
         
