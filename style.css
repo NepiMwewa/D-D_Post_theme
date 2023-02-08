@@ -23,6 +23,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
   --footerBackground: #2C2C2C;
 
   --boarderColor: #FFFFFF;
+  --tableBackgroundColor: #DEDCD3;
+  --tableBorderColor: #a5a399;
 
   --boxShadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   --boxShadowLight: 0px 4px 4px rgba(219, 219, 219, 0.25);
@@ -37,7 +39,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
   --fontHeading: 'Merienda', sans-serif;
   --fontText: 'Rasa', serif;
 
-  --h1Size: 5.5rem;
+  --h1Size: 4.5rem;
   --h2Size: 3rem;
   --h3Size: 2rem;
   --h4Size: 2rem;
@@ -79,7 +81,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
   src: url('fonts/Merienda-Regular.woff2') format('woff2'),
        url('fonts/Merienda-Regular.woff') format('woff');
   font-display: swap;
-  size-adjust: 100%;
 }
 @font-face {
   font-family: 'Rasa';
@@ -110,6 +111,8 @@ h1{
   font-family: var(--fontHeading);
   font-size: var(--h1Size);
   letter-spacing: 3px;
+  font-weight: 100;
+  line-height: 100%;
 } 
 h2{
   font-family: var(--fontHeading);
@@ -389,6 +392,7 @@ li{
 /* single Post */
 .single-post{
   width: auto;
+  margin-top: 0px;
 }
 .single-post .single-content > *{
   width: var(--pageWidth);
@@ -409,6 +413,49 @@ li{
 }
 .single-post .single-content > .full-width-and > div > div.full-width {
   width: auto
+}
+
+/* title & main background img */
+.single-post .single-content #main-img-group > div{
+  position: relative;
+}
+.single-post .single-content #main-img-group #main-img{
+  margin: 0px;
+}
+.single-post .single-content #main-img-group #main-img img{
+  border-radius: 0px;
+  box-shadow: none;
+  object-fit: cover;
+  object-position: 50% 75%;
+  height: 400px;
+  filter: contrast(80%) brightness(50%);
+}
+.single-post .single-content #main-img-group #title-group{
+  position: absolute;
+  top: calc(50% - var(--h1Size)/2);
+  width: 100%;
+  color: var(--secondMainColor);
+}
+.single-post .single-content #main-img-group #title-group h1{
+
+}
+.single-post .single-content #main-img-group #title-group p{
+  text-align: center;
+  margin: 0px;
+}
+.single-post .single-content #main-img-group #title-group p.cats-size{
+  margin-top: 1rem;
+}
+.single-post .single-content #main-img-group #title-group p.cats-size a{
+  font-size: 1.5rem;
+}
+.single-post .single-content #main-img-group #title-group a{
+  color: var(--secondMainColor);
+  font-weight: 200;
+  text-decoration-thickness: 1px;
+  letter-spacing: 3px;
+  font-style: italic;
+  font-size: 1rem;
 }
 
 /* edit post */
@@ -542,7 +589,7 @@ li{
 }
 .single-post img{
   width: 100%;
-  box-shadow: var(--boxShadow) !important;
+  box-shadow: var(--boxShadow);
   border-radius: var(--imgRadious);
 }
 .single-post figure figcaption{
@@ -582,7 +629,6 @@ li{
   padding: 59px var(--sideMargin);
   margin: 0px;
   text-align: center;
-
   background-color: var(--topbackground);
 }
 
@@ -591,6 +637,58 @@ li{
   margin-bottom: var(--spacingMargin);
 }
 
+/*d20 table*/
+
+.single-post{
+
+}
+.single-post .d20-table table{
+  background-color: var(--tableBackgroundColor);
+  border-radius: 10px;
+  box-shadow:  inset var(--boxShadow),
+              0px 4px 4px #ffffff69;
+  font-size: var(--textSize);
+}
+.single-post .d20-table table thead,
+.single-post .d20-table table tbody tr{
+  border-bottom: solid 1px var(--tableBorderColor);
+}
+.single-post .d20-table table tbody tr td:first-child,
+.single-post .d20-table table thead tr th:first-child{
+  border-right: solid 1px var(--tableBorderColor);
+  text-align: center;
+  padding: .8rem;
+}
+.single-post .d20-table table tbody tr:last-child,
+.single-post .d20-table table tbody tr td:last-child{
+  border-bottom: none;
+  border-right: none;
+  text-align: left;
+}
+
+.single-post .wp-block-table td,
+.single-post .wp-block-table th {
+  border: 1px none;
+  padding: 0.5em;
+}
+
+.single-post figure.wp-block-table  {
+  position: relative;
+}
+.single-post  figure.wp-block-table figcaption{
+  position: relative;
+  bottom: inherit;
+  background-color: inherit;
+  color: inherit;
+  padding: inherit;
+  margin-top: 1rem;
+  text-align: center;
+  border-radius: 0px;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+/*expanding button*/
 .single-post .full-width-and button.collapsible {
   width: 100%;
   height: 200px;
@@ -787,7 +885,8 @@ li{
 
 #footer-menu{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  height: 100%;
 }
 #footer-menu a{
   text-decoration: none;
@@ -940,7 +1039,6 @@ Responsive Design
 @media screen and (max-width: 1440px) {
   :root{
     --pageWidth: 1080px;
-    --h1Size: 5rem;
   }
 }
 @media screen and (max-width: 1180px) {
