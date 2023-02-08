@@ -12,9 +12,9 @@
     <p>/</p>
 
     <a> <?php echo get_the_title(); ?></a>
-
-    <div id="edit-post"><?php edit_post_link('Edit Post'); ?></div>
-
+    <?phpif(current_user_can( 'edit_others_posts', $post->ID )){ ?>
+    <div id="edit-post"><?php  echo edit_post_link('Edit Post'); ?></div>
+      <?php }?>
   </div>
 <?php
 ?>

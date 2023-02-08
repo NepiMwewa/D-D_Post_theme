@@ -220,7 +220,15 @@ li{
   color: var(--mainAltColor);
   cursor: pointer;
 }
-
+#hamburger-menu button svg{
+  filter: drop-shadow(0px 2px var(--mainBackground)) drop-shadow(0px 3px 2px rgba(0, 0, 0, 0.20));
+}
+#hamburger-menu button:active{
+  transform: translateY(1px);
+}
+#hamburger-menu button svg:active{
+  filter: drop-shadow(0px 1px var(--mainBackground)) drop-shadow(0px 3px 2px rgb(0, 0, 0, 0.20));
+}
 .blur-background{
   position: fixed;
   top: 0;
@@ -638,10 +646,6 @@ li{
 }
 
 /*d20 table*/
-
-.single-post{
-
-}
 .single-post .d20-table table{
   background-color: var(--tableBackgroundColor);
   border-radius: 10px;
@@ -1117,34 +1121,70 @@ Responsive Design
   .upper-sub-menu a{
     display: block;
   }
-  h1{
-    display: block ;
-    position: absolute;
-    top: 0;
-    margin: 4px;
-    font-size: var(--h2Size);
-  }
 
   .index-content .post{
     max-width: none;
     width: auto;
   }
-
+  .single-post .encounter-group .wp-block-columns:not(.is-not-stacked-on-mobile) {
+    flex-wrap: nowrap!important;
+  }
   .single-post .img-section{
     margin: auto;
     width: 100%;
   }
-  
+  .single-post figure{
+    text-align: center;
+  }
+  .single-post img{
+    width: auto;
+  }
+  /* footer menu */
   #footer-menu li li{
     margin: 5px 0px;
   }
-  a{
-    font-size: var(--footerBigLinkSize);
+  .footer-content .upper-footer-content{
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    align-content: center;
+    width: auto;
+    margin: auto;
+  }
+  .footer-content .upper-footer-content > nav{
+    width: 100%;
+  }
+  .footer-content .upper-footer-content > .form-div{
+    width: auto;
+    min-width: auto;
+    margin: var(--sideMargin);
+  }
+
+  /*contents*/
+  .single-post #contents-table{
+    top: 0;
+    height: 100%;
   }
 }
 @media screen and (max-width: 880px) {
   :root{
     --pageWidth: 750px;
+  }
+  .single-post .encounter-group .encounter-group-top > div{
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    gap: 0px;
+  }
+  .single-post .encounter-group .encounter-group-top > div > p {
+    padding-right: 0px;
+    text-align: center;
+  }
+  .single-post .full-width-and button.collapsible::after{
+    top: 0;
+    right: calc(var(--sideMargin));
+  }
+  .single-post .encounter-group .wp-block-columns:not(.is-not-stacked-on-mobile) {
+    flex-wrap: wrap-reverse!important;
   }
 }
 @media screen and (max-width: 781px) {
@@ -1152,6 +1192,9 @@ Responsive Design
     --pageWidth: auto;
     --pageMargin: 1rem 0px;
     --cardPadding: 8px;
+  }
+  .single-post{
+    margin: 0px;
   }
   #footer-menu{
     flex-wrap: wrap;
@@ -1177,11 +1220,38 @@ Responsive Design
     width: auto !important;
     text-align: center;
   }
+  .single-post #edit-post {
+    position: fixed;
+    display: block;
+    top: 20px;
+    left: var(--sideMargin);
+    z-index: 1;
+  }
+  .single-post #title-group,
+  .single-post .breadcrumbs-single,
+  .single-post .top-group,
+  .single-post .text-column,
+  .single-post .encounter-group-top,
+  .single-post .full-width-and .content.animate-content{
+    padding-left: var(--sideMargin);
+    padding-right: var(--sideMargin);
+  }
 }
 @media screen and (max-width: 570px) {
   :root{
     --h1Size: 4.5rem;
   }
+  .single-post .single-content > .breadcrumbs-single {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    width: var(--pageWidth);
+  }
+  
 }
 @media screen and (max-width: 400px) {
   :root{

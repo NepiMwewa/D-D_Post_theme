@@ -5,7 +5,14 @@ function breadcrumbs_single() {
   $category_link = get_category_link( $the_cat[0]->cat_ID );
   
   $post_title = get_the_title();
-  $edit_post_link = get_edit_post_link(); 
+
+  if(current_user_can( 'edit_posts')){
+    $edit_post_link = get_edit_post_link(); 
+    $tempOuter = '<div id="edit-post"><a href="'.$edit_post_link.'">Edit Post</a></div>';
+    
+  } else {
+    $tempOuter = '';
+  }
   $html = '<div class="bread-crumbs breadcrumbs-single">
     <a title="Go to Home" href="../../../home">Home</a> <p>/</p>
     <a title="Go to Archive" href="../../archive">Archive</a> <p>/</p>
@@ -13,7 +20,7 @@ function breadcrumbs_single() {
 
     <a>'.$post_title.'</a>
 
-    <div id="edit-post"><a class="post-edit-link" href="'.$edit_post_link.'">Edit Post</a></div>
+    '.$tempOuter.'
 
   </div>';
   return $html;

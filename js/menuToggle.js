@@ -42,15 +42,14 @@ window.addEventListener("resize", windowChangedSize);
 
 
 function windowChangedSize(){
+  
   if(window.innerWidth <= 1000){
     isMobile = true;
-   
   }else{
     if(menuToggle){
       toggleMenu();
     }
     isMobile = false;
-    
   }
 }
 
@@ -87,7 +86,7 @@ function init() {
       } else {
         content.style.marginTop = 60 + "px";
         content.style.marginBottom = 60 + "px";
-        content.style.maxHeight = content.scrollHeight + "px";
+        content.style.maxHeight = 100 + "%";
         content.classList.add('animate-content');
       }
     });
