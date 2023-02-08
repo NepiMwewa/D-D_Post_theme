@@ -436,6 +436,7 @@ li{
   object-fit: cover;
   object-position: 50% 75%;
   height: 400px;
+  width: 100%;
   filter: contrast(80%) brightness(50%);
 }
 .single-post .single-content #main-img-group #title-group{
@@ -1219,6 +1220,9 @@ Responsive Design
   .return-left a{
     width: auto !important;
     text-align: center;
+  }
+  .single-post .single-content #main-img-group #title-group {
+    top: calc(30% - var(--h1Size)/2);
   }
   .single-post #edit-post {
     position: fixed;
