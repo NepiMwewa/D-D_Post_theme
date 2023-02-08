@@ -18,6 +18,18 @@ function toggleMenu(){
   }
 }
 
+function goToSection(openingSection){
+  let openElement = document.getElementById(openingSection).getElementsByClassName('content')[0];
+  
+  if (openElement.style.maxHeight == 0){
+    openElement.style.marginTop = 60 + "px";
+    openElement.style.marginBottom = 60 + "px";
+    openElement.style.maxHeight = openElement.scrollHeight + "px"; 
+  }else{
+
+  }
+}
+
 
 function escapeFromMenu(event){
   if(event.key === "Escape" && menuToggle == true)
@@ -71,11 +83,12 @@ function init() {
         content.style.maxHeight = null;
         content.style.marginTop = 0 + "px";
         content.style.marginBottom = 0 + "px";
+        content.classList.remove('animate-content');
       } else {
         content.style.marginTop = 60 + "px";
         content.style.marginBottom = 60 + "px";
         content.style.maxHeight = content.scrollHeight + "px";
-        
+        content.classList.add('animate-content');
       }
     });
   }
@@ -85,11 +98,15 @@ function init() {
     fold.addEventListener("click", function() {
       this.classList.toggle("active");
       var content = this.nextElementSibling;
-      if (content.style.maxHeight){
-        content.style.display = 'none';
+      let contentContainer = document.getElementById("contents-table")
+      if (contentContainer.classList.contains("content-table-open")){
+        contentContainer.classList.remove("content-table-open");
+        content.classList.remove("content-open");
+        content.ariaExpanded = false;
       } else {
-        content.style.display = 'block';
-        
+        contentContainer.classList.add("content-table-open");
+        content.classList.add("content-open");
+        content.ariaExpanded = true;
       }
     });
 }
