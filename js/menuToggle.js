@@ -93,7 +93,7 @@ function init() {
   }
 
   var fold = document.getElementById("button-contents");
-
+    if(fold){
     fold.addEventListener("click", function() {
       this.classList.toggle("active");
       var content = this.nextElementSibling;
@@ -108,5 +108,6 @@ function init() {
         content.ariaExpanded = true;
       }
     });
+  }
 }
 
