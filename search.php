@@ -3,17 +3,19 @@
 ?>
 
 <div class="index-content search-results page-content">
+  
   <?php
+  
     global $wp_query;
 
     $seached_query = get_search_query();
   
     $total_results = $wp_query->found_posts;
     
-    
+    include("assets/breadcrumbs-search.php");
     ?><h1><?php echo $total_results; ?> Search Results for "<?php echo $seached_query ?>"</h1><?php
 
-    include("assets/breadcrumbs-cat.php");
+    
   ?>
   <?php
   if(have_posts()) :
@@ -23,15 +25,13 @@
       <?php if($post->post_type=='page') continue; ?>
       <article class="post">
         <?php if(has_post_thumbnail() ):?>
-        <section class="img-section">
-          <a href="<?php the_permalink(); ?>" title="Permanent Link to <?php the_title_attribute(); ?>">
-            <div class="thumbnail">
-              <?php echo get_the_post_thumbnail();?>
-            </div>
-          </a>
+          <section class="img-section">
+            <figure class="thumbnail">
+              <a href="<?php the_permalink(); ?>" title="Permanent Link to <?php the_title_attribute(); ?>">
+                <?php echo get_the_post_thumbnail();?>
+              </a>
+            </figure>
           <h2><?php the_title();?></h2>
-          
-          
         </section>
         <?php endif;?>
         <section class="text-section">

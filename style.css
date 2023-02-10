@@ -57,7 +57,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
   /* page */
   --pageWidth: 1440px;
   --pageMargin: auto;
-  --pageTopMargin: 74px;
+  --pageTopMargin: 90px;
   /*front page */
   --frontPageTopMargin: 10vh;
   --sideMargin: 10px;
@@ -116,8 +116,9 @@ h1{
   font-weight: 100;
   line-height: 100%;
 }
-.search-results h1{
-  font-size: var(--h4Size);
+.search-results h1,
+.archive-results h1{
+  font-size: var(--h2Size);
 }
 h2{
   font-family: var(--fontHeading);
@@ -387,8 +388,6 @@ li{
 .page-content h1{
   margin-top: 0px;
 }
-
-
 .page-content{
   margin: auto var(--pageMargin);
   padding: 0px;
@@ -407,39 +406,49 @@ li{
 }
 
 /* single Post */
-.single-post{
+.single-post,
+.front-page-content {
   width: auto;
   margin-top: 0px;
 }
-.single-post .single-content > *{
+.single-content > *,
+.front-page-content > * {
   width: var(--pageWidth);
   margin: auto;
 }
-.single-post .single-content > .full-width{
+.single-post .single-content > .full-width,
+.front-page-content > .full-width{ 
   width: auto;
 }
-.single-post .single-content .full-width > div{
+.single-post .single-content .full-width > div,
+.front-page-content .full-width > div {
   width: var(--pageWidth);
   margin: auto;
 }
-.single-post .single-content > .full-width-and {
+.single-post .single-content > .full-width-and,
+.front-page-content > .full-width-and {
   width: auto;
 }
-.single-post .single-content > .full-width-and > div > div {
+.single-post .single-content > .full-width-and > div > div,
+.front-page-content > .full-width-and > div > div{
   width: var(--pageWidth);
 }
-.single-post .single-content > .full-width-and > div > div.full-width {
+.single-post .single-content > .full-width-and > div > div.full-width,
+.front-page-content > .full-width-and > div > div.full-width{
   width: auto
 }
 
 /* title & main background img */
-.single-post .single-content #main-img-group > div{
+.single-post .single-content #main-img-group > div,
+.front-page-content #main-img-group > div{
   position: relative;
 }
-.single-post .single-content #main-img-group #main-img{
+.single-post .single-content #main-img-group #main-img,
+.front-page-content #main-img-group #main-img{
   margin: 0px;
 }
-.single-post .single-content #main-img-group #main-img img{
+.single-post .single-content #main-img-group #main-img img,
+.front-page-content #main-img-group #main-img img{
   border-radius: 0px;
   box-shadow: none;
   object-fit: cover;
@@ -448,14 +457,27 @@ li{
   width: 100%;
   filter: contrast(80%) brightness(50%);
 }
-.single-post .single-content #main-img-group #title-group{
+.single-post .single-content #main-img-group #title-group,
+.front-page-content #main-img-group #title-group{
   position: absolute;
   top: calc(50% - var(--h1Size)/2);
   width: 100%;
   color: var(--secondMainColor);
 }
-.single-post .single-content #main-img-group #title-group h1{
-
+.single-post .single-content #main-img-group #title-group h1,
+.front-page-content #main-img-group #title-group h1{
+  line-height: 1.4em;
+  text-align: center;
+}
+.front-page-content #main-img-group #title-group p{
+  color: var(--secondMainColor);
+  font-weight: 200;
+  text-decoration-thickness: 1px;
+  letter-spacing: 3px;
+  font-style: italic;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: -1.5em;
 }
 .single-post .single-content #main-img-group #title-group p{
   text-align: center;
@@ -816,12 +838,20 @@ li{
 
 
 /* Post collection Page */
-.index-content .post-container{
+.index-content{
+  margin-bottom: 2rem;
+}
+.index-content .post-container,
+.front-page-content .post-container{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-.index-content .post{
+.front-page-content .post-container > li{
+  width: auto !important;
+}
+.index-content .post,
+.front-page-content .post-container > li{
   display: flex;
   flex-direction: column;
   width: auto;
@@ -832,44 +862,55 @@ li{
   border: 1px solid var(--button3Color);
   box-sizing: border-box; 
 }
-.index-content .post p{
+.index-content .post p,
+.front-page-content .post > div p{
   font-size: var(--postSize);
 }
-.index-content .img-section{
+.index-content .img-section,
+.front-page-content .img-section > div{
   position: relative;
   overflow: hidden;
   border-bottom: 2px solid var(--boarderColor);
 }
-.index-content .img-section h2{
+.index-content .img-section h2,
+.front-page-content .img-section > div h2{
   box-sizing: border-box;
-  position: absolute;
   width: 100%;
-  background-color: var(--navBackground);
-  color: var(--secondMainColor);
-  bottom: 0;
   height: auto;
-  font-size: var(--h4Size);
-  font-weight: lighter;
+  position: absolute;
+  bottom: 0;
   margin: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-color: var(--navBackground);
+  color: var(--secondMainColor);
+  font-size: var(--h4Size);
+  font-weight: lighter;
   padding: 20px 10px;
 }
-.index-content .text-section{
+.index-content .text-section,
+.front-page-content .text-section > div{
   margin: var(--cardPadding);
   position: relative;
 }
-.index-content .thumbnail{
-  height: 100%;
+.front-page-content .text-section > div{
+  margin: var(--cardPadding) !important;
 }
-.index-content .thumbnail img{
+.index-content .thumbnail,
+.front-page-content .thumbnail{
+  margin: 0px;
+}
+
+.index-content .thumbnail > a img,
+.front-page-content .thumbnail > a img{
   border-radius: 10px 10px 0px 0px;
   width: 100%;
   height: 100%;
   object-fit: cover;
   aspect-ratio: 1;
+  vertical-align: bottom;
 }
 .index-content .text-section h2{
   width: 100%;
@@ -878,20 +919,25 @@ li{
   display: block;
   text-align: center;
 }
-.index-content .text-section p{
+.index-content .text-section p,
+.front-page-content .text-section > div p{
   font-size: var(--textSize);
   margin-top: 16px;
 }
-.index-content .text-section div.tags-cats a{
+.index-content .text-section div.tags-cats a,
+.front-page-content .text-section > div div.tags-cats > div a{
   font-size: var(--textSize);
   filter: contrast(40%);
 }
-.index-content .read-more-button{
+.index-content .read-more-button,
+.front-page-content .read-more-button{
   margin-top: auto;
   margin-bottom: 20px;
 }
 .index-content .read-more-button a,
-.index-content .read-more-button a:visited{
+.index-content .read-more-button a:visited,
+.front-page-content .read-more-button > div a,
+.front-page-content .read-more-button > div a:visited{
   font-size: 1rem;
   font-weight: bold;
   text-decoration:none;
@@ -916,9 +962,6 @@ li{
   justify-content: stretch;
   gap: 10px;
 }
-.category-list{
-
-}
 .category-list select{
   height: 100%;
   box-shadow: 0px 2px 4px rgba(70, 70, 70, 0.25), inset 0px 2px 4px rgba(255, 255, 255, 0.493);
@@ -926,6 +969,8 @@ li{
   border-radius: 5px;
   border: none;
   padding: .3em 1rem;
+  font-size: 1.2rem;
+  font-family: var(--fontText);
 }
 .category-list select option{
   border: none;
@@ -1140,9 +1185,6 @@ li{
 .footer-content div.wpforms-container-full .wpforms-form label.wpforms-error{
   color: var(--secondMainColor);
 }
-.footer-content div.wpforms-container-full .wpforms-form .wpforms-submit-container{
-
-}
 .footer-content div.wpforms-container-full .wpforms-form button[type=submit]{
   background-color: #C5C5C5;
   border: 1px solid #2D2D2D;
@@ -1213,7 +1255,8 @@ Responsive Design
   :root{
     --pageWidth: 1080px;
   }
-  .index-content .post-container{
+  .index-content .post-container,
+  .front-page-content .post-container{
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -1295,7 +1338,8 @@ Responsive Design
     display: block;
   }
 
-  .index-content .post{
+  .index-content .post,
+  .front-page-content > div .post{
     max-width: none;
     width: auto;
   }
@@ -1369,6 +1413,24 @@ Responsive Design
   .single-post{
     margin: 0px;
   }
+  .single-post #title-group,
+  .single-post .breadcrumbs-single,
+  .single-post .top-group,
+  .single-post .text-column,
+  .single-post .encounter-group-top,
+  .single-post .full-width-and .content.animate-content{
+    padding-left: var(--sideMargin);
+    padding-right: var(--sideMargin);
+  }
+  .front-page-content{
+    margin: 0px;
+  }
+  .front-page-content > *{
+    margin: 0px var(--pageMargin);
+  }
+  .front-page-content > .full-width-and{
+    margin: 0px;
+  }
   #footer-menu{
     flex-wrap: wrap;
   }
@@ -1396,7 +1458,8 @@ Responsive Design
     width: auto !important;
     text-align: center;
   }
-  .single-post .single-content #main-img-group #title-group {
+  .single-post .single-content #main-img-group #title-group,
+  .front-page-content #main-img-group #title-group {
     top: calc(30% - var(--h1Size)/2);
   }
   .single-post #edit-post {
@@ -1406,19 +1469,13 @@ Responsive Design
     left: var(--sideMargin);
     z-index: 1;
   }
-  .single-post #title-group,
-  .single-post .breadcrumbs-single,
-  .single-post .top-group,
-  .single-post .text-column,
-  .single-post .encounter-group-top,
-  .single-post .full-width-and .content.animate-content{
-    padding-left: var(--sideMargin);
-    padding-right: var(--sideMargin);
-  }
-  .index-content .post-container{
+  
+  .index-content .post-container,
+  .front-page-content .post-container{
     grid-template-columns: repeat(1, 1fr);
   }
-  .index-content .thumbnail img{
+  .index-content .thumbnail img,
+  .front-page-content .thumbnail > a img{
     aspect-ratio: 3/2;
   }
   .pagination{
