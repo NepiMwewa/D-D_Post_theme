@@ -1275,8 +1275,7 @@ Responsive Design
     --footerBigLinkSize: 1.75rem;
     --footerSmallLinkSize: 1.25rem;
     --footerCopyrightSize: 1rem;
-    --pageTopMargin: 10px;
-    --frontPageTopMargin: 10px;
+
   }
   .reverse-column{
     -webkit-flex-direction: column-reverse;
@@ -1333,6 +1332,7 @@ Responsive Design
 
   .bread-crumbs{
     margin-left: 4px;
+    font-size: var(--tex);
   }
   .upper-sub-menu a{
     display: block;
@@ -1470,13 +1470,12 @@ Responsive Design
     z-index: 1;
   }
   
+  .category-search-group > div {
+    flex-direction: column;
+}
   .index-content .post-container,
   .front-page-content .post-container{
     grid-template-columns: repeat(1, 1fr);
-  }
-  .index-content .thumbnail img,
-  .front-page-content .thumbnail > a img{
-    aspect-ratio: 3/2;
   }
   .pagination{
     display: flex;
