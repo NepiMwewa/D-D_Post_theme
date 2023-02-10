@@ -36,4 +36,10 @@ register_nav_menus(array(
   'privacy' => __('Privacy Menu'),
 ));
 
+
+function my_pagination_rewrite() {
+  add_rewrite_rule(get_option('category_base').'/page/?([0-9]{1,})/?$', 'index.php?pagename='.get_option('category_base').'&paged=$matches[1]', 'top');
+}
+add_action('init', 'my_pagination_rewrite');
+
 include('custom-shortcodes.php');

@@ -1,29 +1,26 @@
+<?php
+  get_header();
+?>
 
-<?php /* Template Name: archive-page */ ?>
-<?php get_header();?>
-<div class="index-content page-content">
-  <?php 
-  $default_posts_per_page = get_option( 'posts_per_page' );
-  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
-  $args = array( 
-    'post_type'               => 'post',
-    'post_status'             => 'publish',
-    'nopaging'                => false,
-	  'paged'                   => $paged,
-	  'posts_per_page'          => $default_posts_per_page,
-    'category_name'           => '',
-    'order'                   => 'DESC',
-    'orderby'                 => 'date',
-  );
-  $arch_query = new WP_Query( $args );
-  if($arch_query->have_posts()){
-    include("assets/breadcrumbs.php");
-    ?><h1><?php the_title(); ?></h1><?php
+<div class="index-content search-results page-content">
+  <?php
+    global $wp_query;
+
+    $seached_query = get_search_query();
+  
+    $total_results = $wp_query->found_posts;
     
-    the_content();
+    
+    ?><h1><?php echo $total_results; ?> Search Results for "<?php echo $seached_query ?>"</h1><?php
+
+    include("assets/breadcrumbs-cat.php");
+  ?>
+  <?php
+  if(have_posts()) :
     ?> <div class="post-container"> <?php
-    while ($arch_query->have_posts()){
-      $arch_query->the_post();?>
+    while (have_posts())
+      :the_post();?>
+      <?php if($post->post_type=='page') continue; ?>
       <article class="post">
         <?php if(has_post_thumbnail() ):?>
         <section class="img-section">
@@ -33,7 +30,7 @@
             </div>
           </a>
           <h2><?php the_title();?></h2>
-            
+          
           
         </section>
         <?php endif;?>
@@ -53,16 +50,14 @@
             </div>
       </article>
     <?php
-    }
+    endwhile;
     ?> </div> <?php
-    
-    
-  }
-  else{
-    echo '<p>No content found</p>';
+    else:
+      echo '<p>No content found</p>';
 
-  };?>
+    endif;?>
 </div>
+
 <?php
   include("assets/pagination.php");
   wp_reset_postdata();

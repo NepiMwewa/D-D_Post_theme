@@ -100,7 +100,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 }
 html{
   scroll-behavior: smooth;
-  scroll-padding-top: 64px;
+  scroll-padding-top: 90px;
 }
 body{
   background-color: var(--mainBackground);
@@ -115,7 +115,10 @@ h1{
   letter-spacing: 3px;
   font-weight: 100;
   line-height: 100%;
-} 
+}
+.search-results h1{
+  font-size: var(--h4Size);
+}
 h2{
   font-family: var(--fontHeading);
   font-size: var(--h2Size);
@@ -173,38 +176,36 @@ li{
   display: block !important;
   position: fixed;
   top: 0;
-  background-color: var(--mainBackground);
-  backdrop-filter: blur(6px);
+  background-color: var(--navBackground);
+  backdrop-filter: blur(2px);
   width: 100%;
   height: 100%;
   z-index: 11;
 }
-.menu-view #main-menu{
+.menu-view #main-menu {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
   margin: 0px;
-  padding-top: 64px;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 1rem;
 }
+
 .menu-view #main-menu li{
   display: block;
   width: 100%;
+  text-align: center;
   margin: 0px;
-  border-bottom: 1px solid var(--linkBorderColor);
-}
-.menu-view #main-menu li:first-child{
-  border-top: 1px solid var(--linkBorderColor);
 }
 .menu-view #main-menu a{
   display: block;
-  
-  padding: 1rem;
+  padding: 2rem;
 }
 #hamburger-menu{
   display: none;
-  height: 64px;
-  width: 64px;
+  height: 80px;
+  width: 80px;
   position: fixed;
   top: 0;
   right: 0;
@@ -238,7 +239,7 @@ li{
   z-index: 10;
   background-color: var(--navBackground); 
   width: 100%;
-  height: 64px;
+  height: 90px;
 }
 
 
@@ -252,7 +253,7 @@ li{
 }
 
 .header-content{
-  height: 64px;
+  height: 90px;
 }
 .header-menu-container{
   height: 100%;
@@ -264,8 +265,14 @@ li{
   list-style: none;
   height: 100%;
   width: var(--pageWidth);
-
   align-items:  center;
+  gap: 10px;
+}
+#main-menu::before{
+  content: url('assets/light-icon.PNG');
+  display: flex;
+  align-self: center;
+  height: 64px;
 }
 #main-menu a{
   font-family: var(--fontHeading);
@@ -289,13 +296,13 @@ li{
   height: 100%;
 }
 #main-menu .current-menu-item a{
-  text-decoration: underline;
-  text-decoration-color: var(--mainAltColor);
+  color: var(--mainAltColor);
+
 }
 #main-menu .sub-menu{
   display: none;
   position: absolute;
-  top: 64px;
+  top: 90px;
   background-color: var(--navBackground);
   min-width: 160px;
   border-radius: 0px 0px var(--productImgRadius) var(--productImgRadius);
@@ -492,8 +499,8 @@ li{
 .single-post #contents-table{
   position: fixed;
   left: 0;
-  top: 64px;
-  height: calc(100% - 64px);
+  top: 90px;
+  height: calc(100% - 90px);
   width: auto;
   z-index: 1;
   transform: translateX(calc(-100% + var(--contentButtonWidth) - 1px));
@@ -810,19 +817,15 @@ li{
 
 /* Post collection Page */
 .index-content .post-container{
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
-  align-content: space-around;
-  gap: 8px;
-  
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 .index-content .post{
   display: flex;
   flex-direction: column;
-  max-width: 400px;
   width: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 0rem;
   background-color: var(--cardBackground);
   border-radius: 10px;
   box-shadow: var(--boxShadow);
@@ -866,7 +869,7 @@ li{
   width: 100%;
   height: 100%;
   object-fit: cover;
-  aspect-ratio: 3/2;
+  aspect-ratio: 1;
 }
 .index-content .text-section h2{
   width: 100%;
@@ -879,8 +882,9 @@ li{
   font-size: var(--textSize);
   margin-top: 16px;
 }
-.index-content .text-section p a{
+.index-content .text-section div.tags-cats a{
   font-size: var(--textSize);
+  filter: contrast(40%);
 }
 .index-content .read-more-button{
   margin-top: auto;
@@ -903,8 +907,115 @@ li{
   display: block;
 }
 
+/*
+* Search Bar
+*/
 
-  
+.category-search-group > div{
+  display: flex;
+  justify-content: stretch;
+  gap: 10px;
+}
+.category-list{
+
+}
+.category-list select{
+  height: 100%;
+  box-shadow: 0px 2px 4px rgba(70, 70, 70, 0.25), inset 0px 2px 4px rgba(255, 255, 255, 0.493);
+  background-color: var(--topbackground);
+  border-radius: 5px;
+  border: none;
+  padding: .3em 1rem;
+}
+.category-list select option{
+  border: none;
+}
+.wp-block-search{
+  flex-grow: 1;
+}
+.wp-block-search > div{
+  padding: 0px;
+  border: none;
+  gap: 0px;
+  position: relative;
+  box-shadow: 0px 2px 4px rgba(70, 70, 70, 0.25);
+  background-color: transparent;
+}
+.wp-block-search > div input{
+  font-size: 1.2rem;
+  font-family: var(--fontText);
+  padding: .3em 1rem;
+  padding-right: 4.5rem;
+  border-radius: 5px;
+  background-color: var(--topbackground);
+  box-shadow: inset 0px 2px 4px rgba(255, 255, 255, 0.493);
+}
+.wp-block-search > div button{
+  background-color: var(--topbackground);/*#f3f1ed */
+  box-shadow: inset 0px 2px 4px rgba(255, 255, 255, 0.493);
+  border-radius: 0px 5px 5px 0px;
+  border: none;
+  border-left: 1px solid var(--tableBorderColor);
+  margin: 0px;
+  height: 100%;
+  width: 4rem;
+  position: absolute;
+  right: 0;
+}
+
+/*
+* Pagination
+*/
+.pagination{
+  display: flex;
+  justify-content: center;
+  gap: 0px;
+  margin: 2rem auto;
+  width: max-content;
+  text-align: center;
+  background-color: var(--topbackground);
+  padding: .6rem 1.5rem;
+  border-radius: 5px;
+  box-shadow: var(--boxShadow);
+  font-size: var(--textSize);
+}
+.pagination > *{
+  color: var(--mainColor);
+  padding: 0px .6em;
+  text-decoration: none;
+  border-radius: .3em;
+  margin: 0px 2px;
+}
+.pagination .current{
+  background-color: #CA2B30;
+  color: var(--secondMainColor);
+}
+.pagination > * > svg{
+  height: 1em;
+  width: 1em;
+}
+.pagination > .next,
+.pagination > .prev{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px .25em;
+}
+.pagination > *:hover{
+  background-color: rgba(187, 187, 187, 0.568);
+  color: var(--mainColor);
+}
+.pagination > .current:hover{
+  filter: brightness(105%);
+  background-color: var(--mainAltColor);
+  color: var(--secondMainColor);
+}
+.pagination > .greyed-out svg{
+  filter: contrast(10%);
+}
+.pagination > .greyed-out:hover{
+  cursor: no-drop;
+}
 
 
   /* 
@@ -950,6 +1061,26 @@ li{
 }
 
 /* footer form */
+
+#to-top-btn {
+  display: none; /* Hidden by default */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  border: none;
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+  color: var(--mainColor);
+  border-radius: 100px;
+  background-color: var(--secondMainColor);
+  z-index: 1;
+}
+
+#to-top-btn:hover {
+  filter: brightness(80%);
+}
 
 .footer-content .upper-footer-content{
   display: flex;
@@ -1082,6 +1213,9 @@ Responsive Design
   :root{
     --pageWidth: 1080px;
   }
+  .index-content .post-container{
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media screen and (max-width: 1180px) {
   :root{
@@ -1098,6 +1232,7 @@ Responsive Design
     --footerBigLinkSize: 1.75rem;
     --footerSmallLinkSize: 1.25rem;
     --footerCopyrightSize: 1rem;
+    --pageTopMargin: 10px;
     --frontPageTopMargin: 10px;
   }
   .reverse-column{
@@ -1249,6 +1384,9 @@ Responsive Design
     text-align: center;
     margin: 8px;
   }
+  .single-post #contents-table > div {
+    align-items: flex-end;
+  }
 }
 @media screen and (max-width: 768px) {
   .single-product .product .woocommerce-product-gallery__image > a img{
@@ -1277,6 +1415,40 @@ Responsive Design
     padding-left: var(--sideMargin);
     padding-right: var(--sideMargin);
   }
+  .index-content .post-container{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .index-content .thumbnail img{
+    aspect-ratio: 3/2;
+  }
+  .pagination{
+    display: flex;
+    justify-content: space-around;
+    gap: 0px;
+    margin: 2rem auto 0px auto;
+    width: 100%;
+    text-align: center;
+    padding: 0px 1.5rem;
+    box-sizing: border-box;
+  }
+  .pagination > *{
+    display: none;
+    padding: .6em 1.2em;
+    margin: 0px 2px;
+  }
+  .pagination > .current{
+    display: block;
+  }
+  
+  .pagination > .next,
+  .pagination > .prev{
+    padding: .6em 1.2em;
+  }
+  .pagination > * > svg{
+    height: 1em;
+    width: 1em;
+  }
+
 }
 @media screen and (max-width: 570px) {
   :root{
@@ -1292,7 +1464,6 @@ Responsive Design
     flex-wrap: wrap;
     width: var(--pageWidth);
   }
-  
 }
 @media screen and (max-width: 400px) {
   :root{

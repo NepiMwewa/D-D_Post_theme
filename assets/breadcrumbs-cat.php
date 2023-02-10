@@ -4,7 +4,7 @@
     <a href="<?php $actual_link = "http://$_SERVER[HTTP_HOST]"; echo $actual_link . "/home" ?>">Home</a>
     <p>/</p>
 
-    <a title="Go to Archive" href="..">Archive</a>
+    <a title="Go to Archive" href="<?php $actual_link = "http://$_SERVER[HTTP_HOST]"; echo $actual_link . "/archive" ?>">Archive</a>
     <p>/</p>
     
     <a> <?php echo single_term_title(); ?></a>

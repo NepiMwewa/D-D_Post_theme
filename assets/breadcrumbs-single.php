@@ -1,5 +1,4 @@
-<?php
-?>
+<?php?>
   <div class="bread-crumbs breadcrumbs-single">
     <a title="Go to Home" href="<?php $actual_link = "http://$_SERVER[HTTP_HOST]"; echo $actual_link . "/home" ?>">Home</a>
     <p>/</p>
@@ -16,5 +15,4 @@
     <div id="edit-post"><?php  echo edit_post_link('Edit Post'); ?></div>
       <?php }?>
   </div>
-<?php
-?>
+<?php?>

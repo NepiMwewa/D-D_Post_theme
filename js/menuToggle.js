@@ -40,7 +40,6 @@ function escapeFromMenu(event){
 
 window.addEventListener("resize", windowChangedSize);
 
-
 function windowChangedSize(){
   
   if(window.innerWidth <= 1000){
@@ -51,6 +50,19 @@ function windowChangedSize(){
     }
     isMobile = false;
   }
+}
+
+function scrollFunction(myButton) {
+  if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+    myButton.style.display = "block";
+  } else {
+    myButton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
 
@@ -109,5 +121,9 @@ function init() {
       }
     });
   }
+
+myTopButton = document.getElementById("to-top-btn");
+
+window.onscroll = function() {scrollFunction(myTopButton)};
 }
 
