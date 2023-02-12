@@ -14,6 +14,7 @@
     'category_name'           => '',
     'order'                   => 'DESC',
     'orderby'                 => 'date',
+    'ignore_sticky_posts'     => true,
   );
   $arch_query = new WP_Query( $args );
   if($arch_query->have_posts()){
