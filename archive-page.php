@@ -1,7 +1,7 @@
 
 <?php /* Template Name: archive-page */ ?>
 <?php get_header();?>
-<div class="index-content page-content">
+<div class="index-content page-content front-page-content">
   <?php 
   $default_posts_per_page = get_option( 'posts_per_page' );
   $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
@@ -18,9 +18,30 @@
   );
   $arch_query = new WP_Query( $args );
   if($arch_query->have_posts()){
-    include("assets/breadcrumbs.php");
-    ?><h1><?php the_title(); ?></h1><?php
+
+    if(has_post_thumbnail() ){
+    ?><div id="main-img-group" class="is-layout-constrained wp-block-group full-width-and">
+      <div class="wp-block-group__inner-container">
+        <figure class="wp-block-image size-full" id="main-img">
+        <?php echo get_the_post_thumbnail(); ?>
+        </figure>
+
+        <div id="title-group" class="is-layout-constrained wp-block-group">
+          <div class="wp-block-group__inner-container">
+            <h1><?php the_title(); ?></h1>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <?php } else{
+      ?><h1><?php the_title(); ?></h1><?php
+    } 
+    include("assets/breadcrumbs.php"); ?>
     
+   
+    <?php
     the_content();
     ?> <div class="post-container"> <?php
     while ($arch_query->have_posts()){

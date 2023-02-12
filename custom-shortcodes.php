@@ -27,6 +27,19 @@ function breadcrumbs_single() {
 }
 add_shortcode('breadcrumbs-post', 'breadcrumbs_single');
 
+function breadcrumbs_main() {
+  
+  $post_title = get_the_title();
+
+  $html = '<div class="bread-crumbs breadcrumbs-single">
+    <a title="Go to Home" href="../home">Home</a> <p>/</p>
+    <a>'.$post_title.'</a>
+
+  </div>';
+  return $html;
+}
+add_shortcode('breadcrumbs-main', 'breadcrumbs_main');
+
 function add_post_title(){
   $post_title = get_the_title();
   $cats = get_the_category_list(', ');

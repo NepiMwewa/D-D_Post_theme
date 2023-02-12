@@ -18,7 +18,7 @@
   <div class="form-div">
     <h3>Get Free Weekly Encounters</h3>
     <p>If you sign up for our free weekly newsletter, you’ll be notified when a new encounter releases, and you’ll receive additional details and resources for running that encounter, directly in your inbox.</p>
-    <?php echo do_shortcode('[wpforms id="91"]'); ?>
+    <?php echo do_shortcode('[wpforms id="51"]'); ?>
   </div>
   </div>
   
